@@ -1,0 +1,5 @@
+docker stop nginx_geoip
+docker rm nginx_geoip
+docker build -t nginx_geoip .
+docker run --name nginx_geoip -p 8001:80 -d nginx_geoip
+docker logs nginx_geoip

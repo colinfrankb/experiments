@@ -1,0 +1,7 @@
+*.mmdb
+*.tar.gz
+bin
+include
+lib
+.DS_Store
+node_modules
