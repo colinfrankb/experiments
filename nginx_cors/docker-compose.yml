@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8002:8001"
+    volumes:
+      - type: bind
+        source: vhost.conf
+        target: /etc/nginx/conf.d/vhost.conf
+    # network_mode: "host"
