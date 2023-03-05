@@ -7,3 +7,5 @@ lib
 node_modules
 venv
 .ipynb_checkpoints
+flutter_*
+obj
