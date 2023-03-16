@@ -12,3 +12,15 @@
 ## Objective
 
 I want to be able to scale the concurrency of a http web server
+
+## Outcome
+
+- When using Gunicorn's pre-fork worker model
+  - HTTP Requests are processed synchronously
+  - This meant that as I increased the number of users more than the number of gunicorn workers, the latency of the request increased, and the number of requests per second decreased
+  - Meaning it did not scale
+- Using gevent
+  - http://www.gevent.org/
+  - This uses Asynchronous Processing
+  - As the number of users increased more than the number of gunicorn workers, the latency remained constant and the number of requests per second remained constant
+  - Meaning it did scale
