@@ -1,0 +1,27 @@
+services:
+  db:
+    image: postgres:16
+    restart: no
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgrest
+      POSTGRES_PASSWORD: postgrest
+      POSTGRES_DB: app_db
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 1s
+      timeout: 5s
+      retries: 10
+  server:
+    image: postgrest/postgrest
+    ports:
+      - "3000:3000"
+    environment:
+      PGRST_OPENAPI_SERVER_PROXY_URI: http://127.0.0.1:3000
+      PGRST_DB_URI: postgres://authenticator:mysecretpassword@db:5432/app_db
+      PGRST_DB_SCHEMAS: api
+      PGRST_DB_ANON_ROLE: web_anon
+    depends_on:
+      db:
+        condition: service_healthy

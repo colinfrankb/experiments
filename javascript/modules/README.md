@@ -8,6 +8,10 @@ When including a script tag in a HTML page like this, where the script tag is of
 
 No, the javascript inside the script tag does not get executed. The code in the module does get executed.
 
+# Run
+
+`python3 -m http.server 9000`
+
 ## Resources
 https://github.com/mdn/js-examples/blob/main/module-examples/basic-modules/index.html
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules

@@ -6,6 +6,7 @@ lib
 .DS_Store
 node_modules
 venv
+.venv
 .ipynb_checkpoints
 flutter_*
 obj

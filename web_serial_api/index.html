@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Serial API</title>
+</head>
+
+<body>
+  <button>Request Access to Port</button>
+  <script>
+    let byteArrayLength = 195;
+    document.querySelector('button').addEventListener('click', async () => {
+      const port = await navigator.serial.requestPort();
+      const { usbProductId, usbVendorId } = port.getInfo();
+    });
+
+    navigator.serial.addEventListener("connect", (e) => {
+      console.log(e);
+    });
+
+    navigator.serial.addEventListener("disconnect", (e) => {
+      console.log(e);
+    });
+
+    async function configureScanner() {
+      const ports = await navigator.serial.getPorts();
+      console.log(ports);
+      scannerVendorId = 0x05e0;
+      port = ports.find((port) => {
+        let portInfo = port.getInfo();
+
+        console.log(portInfo);
+
+        if (portInfo.usbVendorId == scannerVendorId) return port;
+      });
+
+      await port.open({ baudRate: 9600 });
+
+      while (port.readable) {
+        console.log('is readable');
+        const reader = port.readable.getReader({ mode: "byob" });
+
+        try {
+          let buffer = new ArrayBuffer(720);
+          let offset = 0;
+
+          while (true) {
+            const { value, done } = await reader.read(new Uint8Array(buffer, offset));
+
+            if (done) {
+              console.log('done is true');
+              break;
+            }
+            if (value) {
+              buffer = value.buffer;
+              offset += value.byteLength;
+              
+              if (offset == byteArrayLength) {
+
+                let barcodeByteArray = new Uint8Array(buffer, 0, byteArrayLength);
+                console.log(barcodeByteArray);
+
+                if (byteArrayLength == 195) {
+                  let utf8decoder = new TextDecoder();
+                  console.log(utf8decoder.decode(barcodeByteArray));
+                }
+
+                buffer = new ArrayBuffer(720);
+                offset = 0;
+              } 
+            }
+          }
+          
+        } catch (error) {
+          console.log(error);
+        } finally {
+          reader.releaseLock();
+        }
+      }
+    }
+
+    if ("serial" in navigator) {
+      console.log("Web Serial API supported");
+
+      // configureScanner();
+    }
+
+  </script>
+</body>
+
+</html>

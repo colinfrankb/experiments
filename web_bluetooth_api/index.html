@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Bluetooth API</title>
+</head>
+<body>
+    <button>Request Access to Device</button>
+    <script type="module">
+        document.querySelector('button').addEventListener('click', async () => {
+            navigator.bluetooth.requestDevice({
+                acceptAllDevices: true
+            })
+            .then(device => { /* … */ })
+            .catch(error => { console.error(error); });
+        });
+    </script>
+</body>
+</html>
