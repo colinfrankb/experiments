@@ -1,0 +1,4 @@
+- What happens when an uncaught exception is raised in a Python process?
+  - Does the process stop running or is the process still running and I have to close it?
+    - The process stops running.
+    - In Django, when an uncaught exception is raised, the process is still running, which means the view is wrapped in a try/except in the middleware

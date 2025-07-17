@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Editable HTML Page</title>
+  <style>
+    body { font-family: sans-serif; padding: 1rem; }
+    #editor {
+      border: 1px solid #ccc;
+      padding: 1rem;
+      min-height: 300px;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Editable HTML Page</h1>
+
+  <div id="editor" contenteditable="true">
+    <h2>Hello World</h2>
+    <p>This is some <strong>editable</strong> HTML content.</p>
+  </div>
+
+  <button onclick="saveHTML()">Save</button>
+
+  <script>
+    function saveHTML() {
+      const content = document.getElementById('editor').innerHTML;
+      // You can send this to a server, or download as a file
+      console.log("Saved HTML:", content);
+
+      // Example: Download as file
+    //   const blob = new Blob([content], { type: 'text/html' });
+    //   const a = document.createElement('a');
+    //   a.href = URL.createObjectURL(blob);
+    //   a.download = 'edited.html';
+    //   a.click();
+    //   URL.revokeObjectURL(a.href);
+    }
+  </script>
+
+</body>
+</html>
