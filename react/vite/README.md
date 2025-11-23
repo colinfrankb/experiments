@@ -1,0 +1,1 @@
+How does React with Vite work out of the box
