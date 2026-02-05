@@ -1,0 +1,19 @@
+{
+  "name": "mparticle",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@mparticle/web-google-analytics-4-client-kit": "^1.5.0",
+    "@mparticle/web-google-analytics-4-server-kit": "^1.0.3",
+    "@mparticle/web-sdk": "^2.53.1"
+  },
+  "devDependencies": {
+    "vite": "^7.2.4"
+  }
+}

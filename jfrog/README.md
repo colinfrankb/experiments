@@ -1,0 +1,3 @@
+- Having configured the npm to fetch packages from JFrog, what happens when I try and install a package that's not hosted in the JFrog repository?
+  - If the package doesn't exist in the remote repository it will be fetched from a public repositry and then stored in the remote repository and also the remote cache repository
+  - https://jfrog.com/help/r/jfrog-artifactory-documentation/remote-repositories

@@ -13,3 +13,5 @@ obj
 *.pyc
 gcp
 sadl
+empty-cache
+.npmrc

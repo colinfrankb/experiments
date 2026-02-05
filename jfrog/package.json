@@ -1,0 +1,15 @@
+{
+  "name": "jfrog",
+  "version": "1.0.0",
+  "description": "Having configured the npm to fetch packages from JFrog, what happens when I try and install a package that's not hosted in the JFrog repository?",
+  "license": "ISC",
+  "author": "Colin Bob",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "react": "^19.2.0"
+  }
+}
